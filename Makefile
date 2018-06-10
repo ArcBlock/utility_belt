@@ -41,7 +41,10 @@ doc:
 	@echo "Building the documenation..."
 
 precommit: dep build
-	@mix test_all
+	@mix format
+	@mix credo
+	@mix docs
+	@mix test
 
 travis: precommit
 

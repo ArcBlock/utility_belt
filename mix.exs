@@ -31,7 +31,11 @@ defmodule UtilityBelt.MixProject do
   end
 
   defp deps do
-    []
+    [
+      {:credo, "~> 0.8", only: [:dev, :test]},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.18", only: [:dev, :test]}
+    ]
   end
 
   defp description do
