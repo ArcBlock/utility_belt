@@ -13,4 +13,11 @@ defmodule UtilityBelt.StringUtils do
   rescue
     _ -> str
   end
+
+  def get_last_item(str, splitter) do
+    str
+    |> String.split(splitter)
+    |> Enum.take(-1)
+    |> List.first()
+  end
 end
