@@ -1,4 +1,4 @@
-defmodule UtilityBelt.ProjectTop do
+defmodule UtilityBelt.ProjectUtils do
   @moduledoc """
   Retrieve the top directory for elixir project
   """
