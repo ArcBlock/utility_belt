@@ -3,6 +3,7 @@ defmodule UtilityBelt.Ecto.Querier do
   Helper functions for queries
   """
   require Logger
+  alias Ecto.Adapters.SQL
   alias UtilityBelt.Ecto.Paginator
   alias UtilityBelt.Ecto.QueryBuilder, as: Builder
 
@@ -30,6 +31,13 @@ defmodule UtilityBelt.Ecto.Querier do
     end
   end
 
+  def print_sql(query, repo) do
+    {query, args} = SQL.to_sql(:all, repo, query)
+    IO.puts("Query: #{query}. Params: #{inspect(args)}")
+    query
+  end
+
+  # private functions
   defp get_fields(context) do
     result = context.fields ++ context.extra_fields
     Enum.uniq(result)
