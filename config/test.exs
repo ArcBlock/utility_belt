@@ -5,4 +5,3 @@ config :argon2_elixir,
   m_cost: 8
 
 config :bcrypt_elixir, log_rounds: 4
-config :pbkdf2_elixir, rounds: 1

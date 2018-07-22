@@ -1,3 +1,7 @@
+## 0.4.0 (July 22, 2018)
+  - support basic ecto functionalities
+  - add basic ecto support
+
 ## 0.3.0 (July 22, 2018)
   - add password support
 
