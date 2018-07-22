@@ -1,7 +1,7 @@
 defmodule UtilityBelt.PaginatorTest do
   @moduledoc false
   use ExUnit.Case
-  alias UtilityBelt.Ecto.Query.Paginator
+  alias UtilityBelt.Ecto.Paginator
 
   test "get cursor" do
     assert {10, 0} = Paginator.get_cursor(nil)

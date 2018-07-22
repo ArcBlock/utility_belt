@@ -1,4 +1,4 @@
-defmodule UtilityBelt.Ecto.Context do
+defmodule UtilityBelt.Ecto.QueryContext do
   @moduledoc """
   Query context
   """
@@ -12,4 +12,15 @@ defmodule UtilityBelt.Ecto.Context do
             extra_fields: [],
             total_fn: nil,
             aggr_fn: nil
+end
+
+defmodule UtilityBelt.Ecto.UpdateContext do
+  @moduledoc """
+  Query context
+  """
+  defstruct repo: nil,
+            schema: nil,
+            data: nil,
+            changeset: nil,
+            opts: nil
 end

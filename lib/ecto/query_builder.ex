@@ -1,4 +1,4 @@
-defmodule UtilityBelt.Ecto.Query.Builder do
+defmodule UtilityBelt.Ecto.QueryBuilder do
   @moduledoc """
   composite queries for complex situation
   """

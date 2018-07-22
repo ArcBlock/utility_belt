@@ -1,9 +1,10 @@
-defmodule UtilityBelt.Ecto.Query do
+defmodule UtilityBelt.Ecto.Querier do
   @moduledoc """
   Helper functions for queries
   """
   require Logger
-  alias UtilityBelt.Ecto.Query.{Builder, Paginator}
+  alias UtilityBelt.Ecto.Paginator
+  alias UtilityBelt.Ecto.QueryBuilder, as: Builder
 
   def get(context) do
     args = context.args

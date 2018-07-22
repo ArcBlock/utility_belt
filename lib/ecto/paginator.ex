@@ -1,4 +1,4 @@
-defmodule UtilityBelt.Ecto.Query.Paginator do
+defmodule UtilityBelt.Ecto.Paginator do
   @moduledoc """
   useful utility functions for GQL
   """

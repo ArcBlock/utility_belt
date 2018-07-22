@@ -18,8 +18,33 @@ defmodule UtilityBelt.Factory do
   end
 end
 
-defmodule UtilityBelt.Db.Repo.TestUser do
+defmodule UtilityBelt.Db.Repo do
   @moduledoc false
   def one(_), do: nil
   def all(_), do: nil
+  def insert(changeset), do: {:ok, changeset.changes}
+  def insert(changeset, _opts), do: {:ok, changeset.changes}
+  def update(changeset), do: {:ok, changeset.changes}
+  def delete(changeset), do: {:ok, changeset.changes}
+end
+
+defmodule UtilityBelt.Db.Schema.User do
+  use Ecto.Schema
+  import Ecto.Changeset
+  alias UtilityBelt.Db.Schema.User
+
+  @primary_key false
+  schema "user" do
+    field(:id, :binary_id, primary_key: true, null: false)
+    field(:username, :string, null: false)
+
+    timestamps()
+  end
+
+  def changeset(params) do
+    User
+    |> struct()
+    |> cast(params, [:id, :username])
+    |> validate_required([:id, :username])
+  end
 end

@@ -2,7 +2,7 @@ defmodule UtilityBelt.QueryBuilderTest do
   @moduledoc false
   use ExUnit.Case
   import Ecto.Query
-  alias UtilityBelt.Ecto.Query.Builder
+  alias UtilityBelt.Ecto.QueryBuilder, as: Builder
 
   test "build with select" do
     query = from(u in "user", where: u.id == 100_086)

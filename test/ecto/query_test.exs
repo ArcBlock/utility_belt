@@ -6,35 +6,36 @@ defmodule UtilityBelt.QueryTest do
   import UtilityBelt.Factory
   import Mock
 
-  alias UtilityBelt.Db.Repo.TestUser
-  alias UtilityBelt.Ecto.{Context, Query}
+  alias UtilityBelt.Db.Repo
+  alias UtilityBelt.Ecto.Querier
+  alias UtilityBelt.Ecto.QueryContext, as: Context
 
   test "simple query" do
-    with_mock(TestUser, one: &repo_one/1, all: &repo_all/1) do
+    with_mock(Repo, one: &repo_one/1, all: &repo_all/1) do
       query = from(u in "user", order_by: [desc: u.inserted_at])
 
       context = %Context{
-        repo: TestUser,
+        repo: Repo,
         query: query,
         fields: [:username],
         args: %{age: 30},
         extra_fields: [:id]
       }
 
-      data = Query.get(context)
+      data = Querier.get(context)
       assert is_list(data) == true
     end
   end
 
   test "list query" do
-    with_mock(TestUser, one: &repo_one/1, all: &repo_all/1) do
+    with_mock(Repo, one: &repo_one/1, all: &repo_all/1) do
       query = from(u in "user", order_by: [desc: u.inserted_at])
       total = 100
       total_fn = fn _ -> total end
       fields = []
 
       context = %Context{
-        repo: TestUser,
+        repo: Repo,
         query: query,
         fields: fields,
         args: %{age: 30},
@@ -42,7 +43,7 @@ defmodule UtilityBelt.QueryTest do
         total_fn: total_fn
       }
 
-      data = Query.get_list(context)
+      data = Querier.get_list(context)
       assert is_list(data)
     end
   end
