@@ -36,7 +36,7 @@ defmodule UtilityBelt.MixProject do
       {:joken, "~> 1.1"},
       {:libsodium, "> 0.0.0"},
       {:keccakf1600, "> 0.0.0"},
-      {:libdecaf, "> 0.0.0"},
+      # {:libdecaf, "> 0.0.0"},
 
       # dev & test
       {:credo, "~> 0.8", only: [:dev, :test]},
