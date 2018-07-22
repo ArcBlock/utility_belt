@@ -9,7 +9,7 @@ defmodule UtilityBelt.Jwt do
     encode_name = :"encode_#{method}"
     verify_name = :"verify_#{method}"
 
-    def unquote(encode_name)(data, secret, opts) do
+    def unquote(encode_name)(data, secret, opts \\ [exp: 86400]) do
       exp = Access.get(opts, :exp)
       signer = apply(Joken, unquote(method), [secret])
       data |> token |> with_exp_seconds(exp) |> with_signer(signer) |> sign |> get_compact
