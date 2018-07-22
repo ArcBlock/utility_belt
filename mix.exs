@@ -38,6 +38,11 @@ defmodule UtilityBelt.MixProject do
       {:keccakf1600, "> 0.0.0"},
       # {:libdecaf, "> 0.0.0"},
 
+      # comeonin related
+      {:comeonin, "~> 4.0"},
+      {:argon2_elixir, "~> 1.2"},
+      {:bcrypt_elixir, "~> 1.0"},
+
       # dev & test
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},

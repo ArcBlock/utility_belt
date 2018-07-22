@@ -33,6 +33,7 @@ all: pre-build build post-build
 
 test:
 	@echo "Running test suites..."
+	@mix test
 
 lint:
 	@echo "Linting the software..."

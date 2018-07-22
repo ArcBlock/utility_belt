@@ -1,18 +1,16 @@
 language: elixir
 elixir:
-  - 1.6
+- 1.6
 otp_release:
-  - 21.0
+- 21.0
 branches:
   only:
-    - master
+  - master
 install:
-  - epmd -daemon
-  - mix local.hex --force
-  - mix local.rebar --force
+- epmd -daemon
+- mix local.hex --force
+- mix local.rebar --force
 script: make travis
-env:
-  - MIX_ENV=test
 before_script: make travis-init
 deploy:
   skip_cleanup: true
@@ -21,9 +19,9 @@ deploy:
     cd $TRAVIS_REPO_SLUG; make travis-deploy
   on:
     branch: master
-env:
-  global:
-  - secure: "dyjA3YsXqzvddutlqAG4Y2MFUtlx1nuFKezmhqWyFFa3EKfYhiIpOLA2NrpsPZ1rBBOmYI4tma8XgIYTAkTnsVrNDZBcRxWAxj1RDykMGZCqDTLDCpcJWaheptA+MQVwH17a/RhkNItIms74Iudx6GcnERAF/rlG8VI0px55EeFpN4wrS+gxy0GjUfkQ6TUimjAVqY2PGUBogQBVo8jx8vU0YlIqN2k0na7EzzHzSUkObQ56VRCLaB3R/fRkY2Eq3/IjQ7O3L04GBHlxEm7846KnT7g5Jjb7r1/2zvgkvi8cXnKvFKSSfqdtx2+dneAgb4P3oFU4x0dfygPN37WP4N84D36HGl7aKN+q8L0kF47G9jDEwlv/npwiBJCPCnBJHCLBKV4Sp9yB4Dvk5u3tJ6vJbG+HRWH8tzu+0KkqtRKRJsqwQLwbiO/PyokpsGMdO+hDa3ttkXvc5IP4y/QLPgN7Q+YZ2AIP2EimdpHMc+5ecmjXGCpctY4l1SGTNahge8+46EBR248Ek6nEwERMJ04sCywy2DYS9d4qKk875Wmn4vWU/zMvcPUBJpZA4Vz6HSA+0f50sdGH86yOy/ChELGtsGFP56lGXwVwLhlGpDSkFjP1DVJbEBzXDZa8nIvgwIXtXs/kVw4hvXa0LJ5qSkIVEgLM6KvbqBQUGOwhOLA="
 notifications:
   slack:
-    secure:
+    secure: 
+env:
+  global:
+    secure: dCIKVaQq5Jr2LASJ4UrrbiC7VQ7Y2s9og92VX+ZF9QJ1jgR3D1xxB+sdab/hnVnvDyS/GClkm1sr0FSJymNU0XGsCdpopZ8YosiaX13xHZGv8UuUikd26bSF10iL4JxgVCgoXtxoErytcR8MFOdQGHD7evhQVhmHFLOMArxfNa7ueRzelZKTkrIMxyHXO+FG7S3funBkMfTB+RU+fre9Rj709/urGiYMOF4BwLWQik0A2JCS7hzwkeUDXxe6CyWPRN18zDePr4SlOuTa4gsOhOUl7XH8fHzk8nqOC/CuFTDuhflwm4F23ELMJOe15qDsKM52RheP6AHttB9h7XomCrp5ZdKsbEGtJGI+hSf8NcOnwJF/KKfYrVophzunhQ0ZqmjvnLZ140vGlsdd8NiW4sBs1WkE08vdpVx+tI0g/BtpS3+1rm8OdrnRVCW+D0h1bkWWeqef7FnyTeJXM/BZnlHqOwW8FJTbEH103GLxdV8C6bYEp1SSj8dWgYAEFxLprjIBCCNsUM7jXPyj1hSzqoC6KReBPeuDvaljMSmiUJbL6FLWgmg0wy+VcbszAFbXQ702mQcq5BsaFo/JsGiQ2f+TNMRBNWa5Ir+QY8ksTq6qshRVj9gjenlX87JGOx5tFaGKw5i6n7j/fLwC3y5/R6UntXwmdwT9+F6yLe5kxOw=
