@@ -7,7 +7,7 @@ defmodule UtilityBelt.Jwt do
   [:hs256, :hs384, :hs512]
   |> Enum.map(fn method ->
     encode_name = :"encode_#{method}"
-    verify_name = :"verify_#{method}"
+    decode_name = :"decode_#{method}"
 
     def unquote(encode_name)(data, secret, opts \\ [exp: 86400]) do
       exp = Access.get(opts, :exp)
@@ -15,7 +15,7 @@ defmodule UtilityBelt.Jwt do
       data |> token |> with_exp_seconds(exp) |> with_signer(signer) |> sign |> get_compact
     end
 
-    def unquote(verify_name)(signed_token, secret) do
+    def unquote(decode_name)(signed_token, secret) do
       signer = apply(Joken, unquote(method), [secret])
       signed_token |> token |> with_signer(signer) |> verify |> get_claims |> valid_claim
     end
