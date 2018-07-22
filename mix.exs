@@ -13,6 +13,7 @@ defmodule UtilityBelt.MixProject do
       package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      elixirc_paths: elixirc_paths(Mix.env()),
       # Docs
       name: "UtilityBelt",
       source_url: "https://github.com/tyrchen/utility_belt",
@@ -26,12 +27,20 @@ defmodule UtilityBelt.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {UtilityBelt.Application, []}
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:dev), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   defp deps do
     [
+      {:cipher, "~> 1.4.0"},
+      {:ecto, "~> 2.1"},
+
       # joken related
       {:joken, "~> 1.1"},
       {:libsodium, "> 0.0.0"},
@@ -47,7 +56,12 @@ defmodule UtilityBelt.MixProject do
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test]},
-      {:pre_commit_hook, "~> 1.2", only: [:dev, :test]}
+      {:pre_commit_hook, "~> 1.2", only: [:dev, :test]},
+
+      # test only
+      {:faker, "~> 0.10", only: [:dev, :test]},
+      {:ex_machina, "~> 2.2", only: [:dev, :test]},
+      {:mock, "~> 0.3.1", only: [:dev, :test]}
     ]
   end
 
