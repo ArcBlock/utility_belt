@@ -32,6 +32,13 @@ defmodule UtilityBelt.MixProject do
 
   defp deps do
     [
+      # joken related
+      {:joken, "~> 1.1"},
+      {:libsodium, "> 0.0.0"},
+      {:keccakf1600, "> 0.0.0"},
+      {:libdecaf, "> 0.0.0"},
+
+      # dev & test
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test]},
