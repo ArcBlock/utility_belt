@@ -1,3 +1,6 @@
+## 0.3.0 (July 22, 2018)
+  - add password support
+
 ## 0.2.2 (July 21, 2018)
   - support priv folder related functions
 
