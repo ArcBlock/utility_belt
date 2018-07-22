@@ -1,3 +1,6 @@
+## 0.5.0 (July 22, 2018)
+  - support absinthe related helper functions
+
 ## 0.4.0 (July 22, 2018)
   - support basic ecto functionalities
   - add basic ecto support
