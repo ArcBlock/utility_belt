@@ -7,7 +7,7 @@ defmodule UtilityBelt.Application do
   def start(_type, _args) do
     children = []
 
-    opts = [strategy: :one_for_one, name: Auth.Supervisor]
+    opts = [strategy: :one_for_one, name: UtilityBelt.Supervisor]
 
     update_runtime_config()
 
