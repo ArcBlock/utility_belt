@@ -12,16 +12,14 @@ install:
 - mix local.rebar --force
 script: make travis
 before_script: make travis-init
+before_deploy: make travis-deploy
 deploy:
-  skip_cleanup: true
-  provider: script
-  script: git clone https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG;
-    cd $TRAVIS_REPO_SLUG; make travis-deploy
-  on:
-    branch: master
-notifications:
-  slack:
-    secure: 
-env:
-  global:
-    secure: dCIKVaQq5Jr2LASJ4UrrbiC7VQ7Y2s9og92VX+ZF9QJ1jgR3D1xxB+sdab/hnVnvDyS/GClkm1sr0FSJymNU0XGsCdpopZ8YosiaX13xHZGv8UuUikd26bSF10iL4JxgVCgoXtxoErytcR8MFOdQGHD7evhQVhmHFLOMArxfNa7ueRzelZKTkrIMxyHXO+FG7S3funBkMfTB+RU+fre9Rj709/urGiYMOF4BwLWQik0A2JCS7hzwkeUDXxe6CyWPRN18zDePr4SlOuTa4gsOhOUl7XH8fHzk8nqOC/CuFTDuhflwm4F23ELMJOe15qDsKM52RheP6AHttB9h7XomCrp5ZdKsbEGtJGI+hSf8NcOnwJF/KKfYrVophzunhQ0ZqmjvnLZ140vGlsdd8NiW4sBs1WkE08vdpVx+tI0g/BtpS3+1rm8OdrnRVCW+D0h1bkWWeqef7FnyTeJXM/BZnlHqOwW8FJTbEH103GLxdV8C6bYEp1SSj8dWgYAEFxLprjIBCCNsUM7jXPyj1hSzqoC6KReBPeuDvaljMSmiUJbL6FLWgmg0wy+VcbszAFbXQ702mQcq5BsaFo/JsGiQ2f+TNMRBNWa5Ir+QY8ksTq6qshRVj9gjenlX87JGOx5tFaGKw5i6n7j/fLwC3y5/R6UntXwmdwT9+F6yLe5kxOw=
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: AgRdeQntpyJZUJ6OMoBL/pZIAk5WNDYd981EEBekvV3QqVQp1ZeruLuXBKk/6upMFU76AWJzPcDcwyDTORYG832jo8IHrXr4v4aBkyj2FTRcECcEL7ndEtg6hQ85Lvtw1hHOgjZQZeieOC8dPfZOB+YYekT80HC1EVlOGXZ+19ayHcKKtHDR+C/hlArA964m/mr5Ewqhe6y81FqZkKD/1YpvmqGabf3onpj3IKZQhFk5M2A/Oq1rU76wc7+7M/NphyViw5Sgwr1c+DqiF+8CEdnEnm+k1BbGZoanCjx6uKp3g1ydXaqhSipcW7/Zv8HEPWBAg/8bY4Fr8CNx4lMBqcVUEkm5Xyz4FRb8RuoldK94/Vpq1Su+QlsOSu6Kvxwa8epa2qsRmgrDchD2iGBY0JjQYzU9YXLdamoxr2OeouEQtf/+8mhGa79NJgsrbSW9ZRi9t09HiKuXMH4CBMNh5yYreA5cgduGE1pjEucQZE3eZdEHZa0XrDpKm0HHj7q9mUEcCccxby4NE9vUbIZh3cGi2VxuS49CrP4j54sHBaCPyr4yb3xszwygGP23N5N7rKpe4Hb0FLhYPp4c9pCwM3v5h+q98r2NF7gaSsIkiY4mj0qZY2yOC7QRfqIO4x+8qkh8+hjqPpP7iPlGEY8IbpUdkhIyoo7Uz1dT71cxrKU=
+    file_glob: true
+    file: _build/releases/*
+    on:
+      repo: tyrchen/utility_belt
+      branch: master
