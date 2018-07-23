@@ -1,3 +1,6 @@
+## 0.6.1 (July 22, 2018)
+  - use mix deps
+
 ## 0.6.0 (July 22, 2018)
   - support more ecto functions
 
