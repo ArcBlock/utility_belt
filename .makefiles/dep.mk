@@ -1,4 +1,4 @@
-SRC=./src
+SRC=.
 DEPS_VER=v0.2.1
 DEPS_PREFIX=https://github.com/tyrchen/mix-deps/releases/download
 BUILDS_FILE=builds.tgz
