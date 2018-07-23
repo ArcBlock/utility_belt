@@ -18,16 +18,6 @@ defmodule UtilityBelt.Factory do
   end
 end
 
-defmodule UtilityBelt.Db.Repo do
-  @moduledoc false
-  def one(_), do: nil
-  def all(_), do: nil
-  def insert(changeset), do: {:ok, changeset.changes}
-  def insert(changeset, _opts), do: {:ok, changeset.changes}
-  def update(changeset), do: {:ok, changeset.changes}
-  def delete(changeset), do: {:ok, changeset.changes}
-end
-
 defmodule UtilityBelt.Db.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
@@ -41,10 +31,28 @@ defmodule UtilityBelt.Db.Schema.User do
     timestamps()
   end
 
-  def changeset(params) do
+  def insert_changeset(params) do
     User
     |> struct()
     |> cast(params, [:id, :username])
     |> validate_required([:id, :username])
   end
+
+  def update_changeset(params, data \\ User) do
+    data
+    |> struct()
+    |> cast(params, [:id, :username])
+  end
+end
+
+defmodule UtilityBelt.Db.Repo do
+  @moduledoc false
+  alias UtilityBelt.Db.Schema.User
+  def one(_), do: nil
+  def all(_), do: nil
+  def insert(changeset), do: {:ok, changeset.changes}
+  def insert(changeset, _opts), do: {:ok, changeset.changes}
+  def update(changeset), do: {:ok, changeset.changes}
+  def delete(changeset), do: {:ok, changeset.changes}
+  def get_by(_schema, _opts), do: %User{id: 1, username: "tyr"}
 end

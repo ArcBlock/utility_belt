@@ -40,6 +40,7 @@ defmodule UtilityBelt.MixProject do
     [
       {:cipher, "~> 1.4.0"},
       {:ecto, "~> 2.1"},
+      {:not_qwerty123, "~> 2.3"},
       {:recase, "~> 0.3.0"},
 
       # joken related
