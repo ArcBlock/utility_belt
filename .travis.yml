@@ -5,7 +5,9 @@ otp_release:
 - 21.0
 branches:
   only:
-  - master
+    - master
+before_install:
+  - sudo apt-get install -y rpm2cpio
 install:
 - epmd -daemon
 - mix local.hex --force
