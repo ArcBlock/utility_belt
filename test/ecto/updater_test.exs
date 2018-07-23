@@ -43,7 +43,7 @@ defmodule UtilityBelt.UpdaterTest do
   end
 
   test "simple update" do
-    with_mock(Repo, update: &repo_update/1) do
+    with_mock(Repo, update: &repo_update/1, get_by: &reo_get_by/2) do
       context = %UpdateContext{
         repo: Repo,
         schema: User,
@@ -72,4 +72,5 @@ defmodule UtilityBelt.UpdaterTest do
   defp repo_insert(changeset, _opts), do: {:ok, changeset.changes}
   defp repo_update(changeset), do: {:ok, changeset.changes}
   defp repo_delete(changeset), do: {:ok, changeset.changes}
+  def reo_get_by(_schema, _opts), do: %User{id: 1, username: "tyr"}
 end

@@ -22,5 +22,7 @@ defmodule UtilityBelt.Ecto.UpdateContext do
             schema: nil,
             data: nil,
             changeset: nil,
-            opts: nil
+            opts: nil,
+            fields: nil,
+            query: nil
 end

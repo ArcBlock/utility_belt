@@ -20,4 +20,8 @@ defmodule UtilityBelt.StringUtils do
     |> Enum.take(-1)
     |> List.first()
   end
+
+  def mod_to_snake(mod) do
+    mod |> Atom.to_string() |> get_last_item(".") |> Recase.to_snake()
+  end
 end
