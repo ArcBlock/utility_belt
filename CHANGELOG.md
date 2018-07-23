@@ -1,3 +1,9 @@
+## 0.7.0 (July 23, 2018)
+  - update travis
+  - build release
+  - fix the makefile
+  - remove unnecessary logs
+
 ## 0.6.1 (July 22, 2018)
   - use mix deps
 

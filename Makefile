@@ -1,7 +1,10 @@
 TOP_DIR=.
 README=$(TOP_DIR)/README.md
 
+BUILD_NAME=utility_belt
 VERSION=$(strip $(shell cat version))
+ELIXIR_VERSION=$(strip $(shell cat .elixir_version))
+OTP_VERSION=$(strip $(shell cat .otp_version))
 
 build:
 	@echo "Building the software..."
