@@ -1,3 +1,6 @@
+## 0.8.0 (July 23, 2018)
+  - add plugs for metrics
+
 ## 0.7.0 (July 23, 2018)
   - update travis
   - build release
