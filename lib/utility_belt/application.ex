@@ -5,7 +5,15 @@ defmodule UtilityBelt.Application do
   alias UtilityBelt.Config
 
   def start(_type, _args) do
-    children = []
+    con_cache_opts = [
+      name: :query_metrics,
+      ttl_check_interval: :timer.seconds(5),
+      global_ttl: :timer.seconds(10)
+    ]
+
+    children = [
+      {ConCache, con_cache_opts}
+    ]
 
     opts = [strategy: :one_for_one, name: UtilityBelt.Supervisor]
 
