@@ -21,8 +21,12 @@ defmodule UtilityBelt.Plug.Metrics do
 
     Conn.register_before_send(conn, fn conn ->
       count = get_query_count()
-      Logger.info("Query Executed #{count} queries for #{conn.params["query"]}")
-      send_metrics("#{prefix}.queries_per_request", count, get_tags())
+
+      if count > 0 do
+        Logger.info("Query Executed #{count} queries for #{conn.params["query"]}")
+        send_metrics("#{prefix}.queries_per_request", count, get_tags())
+      end
+
       conn
     end)
   end

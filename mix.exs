@@ -87,7 +87,16 @@ defmodule UtilityBelt.MixProject do
 
   defp package do
     [
-      files: ["config", "lib", "mix.exs", "README*", "LICENSE*", "version", ".elixir_version", ".otp_version"],
+      files: [
+        "config",
+        "lib",
+        "mix.exs",
+        "README*",
+        "LICENSE*",
+        "version",
+        ".elixir_version",
+        ".otp_version"
+      ],
       licenses: ["MIT"],
       maintainers: ["tyr.chen@gmail.com"],
       links: %{
