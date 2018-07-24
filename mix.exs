@@ -59,6 +59,10 @@ defmodule UtilityBelt.MixProject do
       {:argon2_elixir, "~> 1.2"},
       {:bcrypt_elixir, "~> 1.0"},
 
+      # Normal
+      {:con_cache, "~> 0.13.0"},
+      {:ex_datadog_plug, "~> 0.5.0"},
+
       # deployment
       {:distillery, "~> 1.5", runtime: false},
 
