@@ -33,5 +33,3 @@
   - fix makefile
 
 ## 0.2.0 (June 11, 2018)
-
-
