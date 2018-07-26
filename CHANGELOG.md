@@ -1,3 +1,6 @@
+## 0.9.0 (July 26, 2018)
+  - add dynamic module gen(code was from goldorin)
+
 ## 0.8.0 (July 23, 2018)
   - add plugs for metrics
 
