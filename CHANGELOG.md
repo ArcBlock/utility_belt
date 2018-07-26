@@ -1,3 +1,6 @@
+## 0.10.0 (July 26, 2018)
+  - update elixir to 1.7
+
 ## 0.9.0 (July 26, 2018)
   - add dynamic module gen(code was from goldorin)
 
