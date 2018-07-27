@@ -73,4 +73,18 @@ defmodule UtilityBelt.CodeGen.DynamicModule do
       end
     end
   end
+
+  def gen_module_name(app, prefix, name, postfix \\ "") do
+    app_name = app |> Atom.to_string() |> Recase.to_pascal()
+    name = name |> Recase.to_pascal()
+
+    case postfix do
+      "" -> "#{app_name}.#{prefix}.#{name}"
+      _ -> "#{app_name}.#{prefix}.#{name}.#{postfix}"
+    end
+  end
+
+  def normalize_name(nil), do: nil
+  def normalize_name(name) when is_atom(name), do: name
+  def normalize_name(name), do: String.to_atom(name)
 end

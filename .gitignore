@@ -26,3 +26,4 @@ utility_belt-*.tar
 .elixir_ls
 *.beam
 /config/*.secret.exs
+.vscode
