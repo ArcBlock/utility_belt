@@ -24,7 +24,7 @@ defmodule UtilityBelt.Ecto.Paginator do
         v -> v
       end
 
-    {size, String.to_integer(cursor)}
+    {size, cursor_to_integer(cursor)}
   end
 
   def get_info(data, total, cursor, size) do
@@ -64,4 +64,12 @@ defmodule UtilityBelt.Ecto.Paginator do
     do: Application.get_env(:utility_belt, :default_cursor, Cipher.encrypt("0"))
 
   def get_default_page, do: Application.get_env(:utility_belt, :default_page_size, 10)
+
+  defp cursor_to_integer(""), do: 0
+
+  defp cursor_to_integer(cursor) do
+    String.to_integer(cursor)
+  rescue
+    _ -> 0
+  end
 end
