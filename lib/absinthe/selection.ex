@@ -14,6 +14,10 @@ defmodule UtilityBelt.Absinthe.Selection do
     {raw -- exclude, complex}
   end
 
+  def filter_fields(fields, exclude) do
+    fields -- exclude
+  end
+
   def parse_info(info) do
     name = normalize_query_name(info.definition.name)
     fields = get_selections(info.definition.selections)
