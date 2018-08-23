@@ -51,7 +51,7 @@ defmodule UtilityBelt.MixProject do
       # joken related
       {:joken, "~> 1.1"},
       {:libsodium, "> 0.0.0"},
-      {:keccakf1600, "> 0.0.0"},
+      {:keccakf1600, "~> 2.0", hex: :keccakf1600_orig},
       # {:libdecaf, "> 0.0.0"},
 
       # comeonin related
