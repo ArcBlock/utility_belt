@@ -12,6 +12,8 @@ defmodule UtilityBelt.Ecto.QueryContext do
             extra_fields: [],
             total_fn: nil,
             aggr_fn: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule UtilityBelt.Ecto.UpdateContext do
@@ -25,4 +27,6 @@ defmodule UtilityBelt.Ecto.UpdateContext do
             opts: nil,
             fields: nil,
             query: nil
+
+  @type t :: %__MODULE__{}
 end
