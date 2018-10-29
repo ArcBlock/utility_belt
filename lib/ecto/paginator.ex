@@ -12,12 +12,6 @@ defmodule UtilityBelt.Ecto.Paginator do
     paging = Map.get(args, :paging, %{size: default_page_size, cursor: default_cursor})
     size = Map.get(paging, :size, default_page_size)
 
-    size =
-      case size > default_page_size do
-        true -> default_page_size
-        _ -> size
-      end
-
     cursor =
       case paging |> Map.get(:cursor, default_cursor) |> Cipher.decrypt() do
         {:error, _} -> "0"

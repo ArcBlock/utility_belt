@@ -51,7 +51,7 @@ defmodule UtilityBelt.Ecto.Querier do
     query
   end
 
-  @spec to_sql(Ecto.Query.t(), atom()) :: {String.t, [term]}
+  @spec to_sql(Ecto.Query.t(), atom()) :: {String.t(), [term]}
   def to_sql(query, repo) do
     SQL.to_sql(:all, repo, query)
   end
