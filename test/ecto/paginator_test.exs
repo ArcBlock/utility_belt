@@ -6,8 +6,8 @@ defmodule UtilityBelt.PaginatorTest do
   test "get cursor" do
     assert {10, 0} = Paginator.get_cursor(nil)
     assert {10, 0} = Paginator.get_cursor(%{})
-    assert {10, 0} = Paginator.get_cursor(%{paging: %{size: 100}})
-    assert {10, 20} = Paginator.get_cursor(%{paging: %{size: 655, cursor: Cipher.encrypt("20")}})
+    assert {100, 0} = Paginator.get_cursor(%{paging: %{size: 100}})
+    assert {655, 20} = Paginator.get_cursor(%{paging: %{size: 655, cursor: Cipher.encrypt("20")}})
   end
 
   test "get page info" do
