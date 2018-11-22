@@ -23,5 +23,5 @@ deploy:
     file_glob: true
     file: _build/releases/*
     on:
-      repo: tyrchen/utility_belt
+      repo: ArcBlock/utility_belt
       branch: master
