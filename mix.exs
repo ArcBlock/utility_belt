@@ -43,39 +43,37 @@ defmodule UtilityBelt.MixProject do
 
   defp deps do
     [
-      {:cipher, "~> 1.4.0"},
-      {:ecto, "~> 2.1"},
+      {:cipher, "~> 1.4"},
+      {:ecto, "~> 3.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, "~> 0.14"},
       {:not_qwerty123, "~> 2.3"},
       {:recase, "~> 0.3.0"},
 
       # joken related
-      {:joken, "~> 1.1"},
-      {:libsodium, "> 0.0.0"},
-      {:keccakf1600, "~> 2.0", hex: :keccakf1600_orig},
-      # {:libdecaf, "> 0.0.0"},
+      {:joken, "~> 1.5"},
 
       # comeonin related
-      {:comeonin, "~> 4.0"},
-      {:argon2_elixir, "~> 1.2"},
-      {:bcrypt_elixir, "~> 1.0"},
+      {:comeonin, "~> 4.1"},
+      {:argon2_elixir, "~> 1.3"},
+      {:bcrypt_elixir, "~> 1.1"},
 
       # Normal
       {:con_cache, "~> 0.13.0"},
       {:ex_datadog_plug, "~> 0.5.0"},
-
-      # deployment
-      {:distillery, "~> 1.5", runtime: false},
+      {:plug, "~> 1.7", optional: true},
 
       # dev & test
-      {:credo, "~> 0.8", only: [:dev, :test]},
+      {:credo, "~> 1.0", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.18.0", only: [:dev, :test]},
+      {:ex_doc, "~> 0.19", only: [:dev, :test]},
       {:pre_commit_hook, "~> 1.2", only: [:dev, :test]},
 
       # test only
-      {:faker, "~> 0.10", only: [:dev, :test]},
-      {:ex_machina, "~> 2.2", only: [:dev, :test]},
-      {:mock, "~> 0.3.1", only: [:dev, :test]}
+      {:faker, "~> 0.11", only: [:dev, :test]},
+      {:ex_machina, "~> 2.2.2", only: [:dev, :test]},
+      {:mock, "~> 0.3", only: [:dev, :test]},
+      {:coveralls, "~> 1.5", only: [:test]}
     ]
   end
 

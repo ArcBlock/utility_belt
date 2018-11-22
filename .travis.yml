@@ -1,8 +1,8 @@
 language: elixir
 elixir:
-- 1.6
+- 1.7.4
 otp_release:
-- 21.0
+- 21.1.1
 branches:
   only:
     - master
@@ -23,5 +23,5 @@ deploy:
     file_glob: true
     file: _build/releases/*
     on:
-      repo: tyrchen/utility_belt
+      repo: ArcBlock/utility_belt
       branch: master
