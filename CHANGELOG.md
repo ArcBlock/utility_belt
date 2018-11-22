@@ -1,3 +1,7 @@
+## 0.11.0 (November 22, 2018)
+  - clean up deps
+  - minor changes for Ecto querier to more easy ut and cancel hard limit for cursor
+
 ## 0.9.0 (July 26, 2018)
   - add dynamic module gen(code was from goldorin)
 
