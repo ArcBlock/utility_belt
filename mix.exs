@@ -46,6 +46,7 @@ defmodule UtilityBelt.MixProject do
       {:cipher, "~> 1.4"},
       {:ecto, "~> 3.0"},
       {:ecto_sql, "~> 3.0"},
+      {:postgrex, "~> 0.14"},
       {:not_qwerty123, "~> 2.3"},
       {:recase, "~> 0.3.0"},
 
