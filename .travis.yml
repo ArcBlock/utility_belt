@@ -1,17 +1,17 @@
 language: elixir
 elixir:
-- 1.7.4
+  - 1.7.4
 otp_release:
-- 21.1.1
+  - 21.1.1
 branches:
   only:
     - master
 before_install:
   - sudo apt-get install -y rpm2cpio
 install:
-- epmd -daemon
-- mix local.hex --force
-- mix local.rebar --force
+  - epmd -daemon
+  - mix local.hex --force
+  - mix local.rebar --force
 script: make travis
 before_script: make travis-init
 before_deploy: make travis-deploy
