@@ -1,3 +1,7 @@
+## 0.11.1 (November 26, 2018)
+  - Use mix-deps v0.5.1; remove dead code
+  - Remove duplicate license
+
 ## 0.11.0 (November 22, 2018)
   - clean up deps
   - minor changes for Ecto querier to more easy ut and cancel hard limit for cursor
