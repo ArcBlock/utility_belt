@@ -1,6 +1,20 @@
 defmodule UtilityBelt.CodeGen.DynamicModule do
   @moduledoc """
-  Generate a new module based on AST
+  Generate a new module based on AST.
+  """
+
+  @doc """
+  Generate `.beam` and `.ex` files based on:
+
+    * `mod_name` - the module name
+    * `preamble` - the module attibutes and directives in AST, e.g. `use GenServer`, `require Logger`, etc
+    * `contents` - the module body in AST
+
+  ## Options
+
+    * `:doc` - the documents to the module. Defaults to `false`
+    * `:path` - the path for generated `.ex` files. Defaults to `""`
+    * `:create` - a boolean value indicates whether to create `.beam` file. Defaults to `true`
   """
   defmacro gen(mod_name, preamble, contents, opts \\ []) do
     quote bind_quoted: [
@@ -9,9 +23,9 @@ defmodule UtilityBelt.CodeGen.DynamicModule do
             contents: contents,
             opts: opts
           ] do
-      mod_doc = Access.get(opts, :doc, false)
-      path = Access.get(opts, :path, "")
-      create? = Access.get(opts, :create, true)
+      mod_doc = Keyword.get(opts, :doc, false)
+      path = Keyword.get(opts, :path, "")
+      create = Keyword.get(opts, :create, true)
 
       moduledoc =
         quote do
@@ -20,70 +34,93 @@ defmodule UtilityBelt.CodeGen.DynamicModule do
 
       name = String.to_atom("Elixir.#{mod_name}")
 
-      case create? do
-        false ->
-          nil
-
-        _ ->
-          Module.create(
-            name,
-            [moduledoc] ++ [preamble] ++ [contents],
-            Macro.Env.location(__ENV__)
-          )
+      if create do
+        Module.create(
+          name,
+          [moduledoc] ++ [preamble] ++ [contents],
+          Macro.Env.location(__ENV__)
+        )
       end
 
       case File.mkdir_p(path) do
         {:error, :enoent} ->
-          IO.puts("Module #{mod_name} is generated.")
+          [:cyan, "Module [#{mod_name}] is generated."]
+          |> IO.ANSI.format()
+          |> IO.puts()
 
-        _ ->
+        :ok ->
           filename = Path.join(path, "#{mod_name}.ex")
 
           term =
-            case is_list(contents) do
-              true ->
-                quote do
-                  defmodule unquote(name) do
-                    unquote(moduledoc)
-                    unquote(preamble)
-                    unquote_splicing(contents)
-                  end
+            if is_list(contents) do
+              quote do
+                defmodule unquote(name) do
+                  unquote(moduledoc)
+                  unquote(preamble)
+                  unquote_splicing(contents)
                 end
-
-              _ ->
-                quote do
-                  defmodule unquote(name) do
-                    unquote(moduledoc)
-                    unquote(preamble)
-                    unquote(contents)
-                  end
+              end
+            else
+              quote do
+                defmodule unquote(name) do
+                  unquote(moduledoc)
+                  unquote(preamble)
+                  unquote(contents)
                 end
+              end
             end
 
           term =
             term
             |> Macro.to_string()
             |> String.replace(~r/(\(\s|\s\))/, "")
-            # |> String.replace(~r/\(([^)(]+)\)/, " \\1")
             |> String.replace(~r/def([^(]*)\((.*?)\) do/, "def\\1 \\2 do")
             |> String.replace(~r/create([^(]*)\((.*?)\) do/, "create\\1 \\2 do")
 
           File.write!(filename, term)
-          IO.puts("Module #{mod_name} is generated and file gets created at #{filename}.")
+          Mix.Tasks.Format.run([filename])
+
+          [:cyan, "Module [#{mod_name}] is generated. File created at #{filename}."]
+          |> IO.ANSI.format()
+          |> IO.puts()
       end
     end
   end
 
+  @doc """
+  Generate module name based on `app`, `prefix` and `name`. The `postfix` is optional.
+
+  ## Examples
+
+      iex> DynamicModule.gen_module_name(:app, "Prefix", "name")
+      "App.Prefix.Name"
+
+      iex> DynamicModule.gen_module_name(:app, "Prefix", "name", "Postfix")
+      "App.Prefix.Name.Postfix"
+  """
+  @spec gen_module_name(atom(), String.t(), String.t(), String.t()) :: String.t()
   def gen_module_name(app, prefix, name, postfix \\ "") do
-    app_name = app |> Atom.to_string() |> Recase.to_pascal()
-    name = name |> Recase.to_pascal()
+    app = app |> Atom.to_string() |> Recase.to_pascal()
+    name = Recase.to_pascal(name)
 
     case postfix do
-      "" -> "#{app_name}.#{prefix}.#{name}"
-      _ -> "#{app_name}.#{prefix}.#{name}.#{postfix}"
+      "" -> "#{app}.#{prefix}.#{name}"
+      _ -> "#{app}.#{prefix}.#{name}.#{postfix}"
     end
   end
 
+  @doc """
+  Normalize name to atom.
+
+  ## Examples
+
+      iex> DynamicModule.normalize_name("a")
+      :a
+
+      iex> DynamicModule.normalize_name(:abc)
+      :abc
+  """
+  @spec normalize_name(String.t() | atom()) :: atom()
   def normalize_name(nil), do: nil
   def normalize_name(name) when is_atom(name), do: name
   def normalize_name(name), do: String.to_atom(name)
