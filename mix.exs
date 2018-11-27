@@ -21,8 +21,8 @@ defmodule UtilityBelt.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       # Docs
       name: "UtilityBelt",
-      source_url: "https://github.com/tyrchen/utility_belt",
-      homepage_url: "https://github.com/tyrchen/utility_belt",
+      source_url: "https://github.com/ArcBlock/utility_belt",
+      homepage_url: "https://github.com/ArcBlock/utility_belt",
       docs: [
         main: "UtilityBelt",
         extras: ["README.md"]
@@ -98,7 +98,7 @@ defmodule UtilityBelt.MixProject do
       licenses: ["MIT"],
       maintainers: ["tyr.chen@gmail.com"],
       links: %{
-        "GitHub" => "https://github.com/tyrchen/utility_belt",
+        "GitHub" => "https://github.com/ArcBlock/utility_belt",
         "Docs" => "https://hexdocs.pm/utility_belt"
       }
     ]
