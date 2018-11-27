@@ -1,3 +1,6 @@
+## 0.11.2 (November 26, 2018)
+  - Use mix-deps v0.6.0; update mix.lock for latest deps version
+
 ## 0.11.1 (November 26, 2018)
   - Use mix-deps v0.5.1; remove dead code
   - Remove duplicate license
