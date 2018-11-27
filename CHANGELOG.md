@@ -1,3 +1,8 @@
+## 0.12.0 (November 27, 2018)
+  - Add docs for DynamicModule; Add mix format for generated .ex file
+  - Update repo name to ArcBlock
+  - Tweak on credo settings
+
 ## 0.11.2 (November 26, 2018)
   - Use mix-deps v0.6.0; update mix.lock for latest deps version
 
