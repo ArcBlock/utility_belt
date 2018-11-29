@@ -9,7 +9,7 @@ defmodule UtilityBelt.Password do
 
   ["Argon2", "Bcrypt"]
   |> Enum.map(fn name ->
-    mod = String.to_existing_atom("#{@prefix}.#{name}")
+    mod = String.to_atom("#{@prefix}.#{name}")
     new_name = String.downcase(name)
     enc_name = String.to_atom("encrypt_#{new_name}")
     check_name = String.to_atom("check_#{new_name}")

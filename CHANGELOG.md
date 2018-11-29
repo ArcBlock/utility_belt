@@ -1,3 +1,6 @@
+## 0.12.2 (November 29, 2018)
+  - fix to_existing_atom error
+
 ## 0.12.1 (November 29, 2018)
   - make argon2 and bcrypt optional
 
