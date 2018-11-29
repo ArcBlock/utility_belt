@@ -1,3 +1,6 @@
+## 0.12.1 (November 29, 2018)
+  - make argon2 and bcrypt optional
+
 ## 0.12.0 (November 27, 2018)
   - Add docs for DynamicModule; Add mix format for generated .ex file
   - Update repo name to ArcBlock

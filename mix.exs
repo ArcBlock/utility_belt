@@ -55,8 +55,8 @@ defmodule UtilityBelt.MixProject do
 
       # comeonin related
       {:comeonin, "~> 4.1"},
-      {:argon2_elixir, "~> 1.3"},
-      {:bcrypt_elixir, "~> 1.1"},
+      {:argon2_elixir, "~> 1.3", optional: true},
+      {:bcrypt_elixir, "~> 1.1", optional: true},
 
       # Normal
       {:con_cache, "~> 0.13.0"},
