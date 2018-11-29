@@ -1,3 +1,6 @@
+## 0.12.3 (November 29, 2018)
+  - update elixir version
+
 ## 0.12.2 (November 29, 2018)
   - fix to_existing_atom error
 
