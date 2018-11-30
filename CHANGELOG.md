@@ -1,3 +1,8 @@
+## 0.13.0 (November 30, 2018)
+  - Clean up makefile
+  - Remove dead code
+  - Restructure the folders
+
 ## 0.12.3 (November 29, 2018)
   - update elixir version
 
