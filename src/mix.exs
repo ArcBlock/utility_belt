@@ -19,6 +19,7 @@ defmodule UtilityBelt.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       elixirc_paths: elixirc_paths(Mix.env()),
+
       # Docs
       name: "UtilityBelt",
       source_url: "https://github.com/ArcBlock/utility_belt",
