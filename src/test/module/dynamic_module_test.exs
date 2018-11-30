@@ -3,6 +3,8 @@ defmodule UtilityBelt.DynamicModuleTest do
   alias UtilityBelt.CodeGen.DynamicModule
   require DynamicModule
 
+  doctest DynamicModule
+
   test "generate a dynamic module" do
     name = "Acme.Server"
 
@@ -13,9 +15,9 @@ defmodule UtilityBelt.DynamicModuleTest do
 
     contents =
       quote do
-        def start_link, do: GenServer.start_link(Acme.Server, nil, name: Acme.Server)
+        def start_link, do: GenServer.start_link(Acme.Server, [], name: Acme.Server)
         def hello, do: GenServer.call(Acme.Server, :hello)
-        def init(_), do: {:ok, nil}
+        def init([]), do: {:ok, []}
         def handle_call(:hello, _from, state), do: {:reply, "hello world", state}
       end
 

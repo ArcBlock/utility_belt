@@ -1,6 +1,7 @@
 /_build/
 /deps/
 /doc/
+/cover/
 /config/*.secret.exs
 .elixir_ls
 .vscode
