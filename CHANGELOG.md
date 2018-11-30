@@ -1,3 +1,7 @@
+## 0.13.1 (November 30, 2018)
+  - Travis use on.tags=true to prevent the unnecessary untagged releases
+  - Add doctest for DynamicModule
+
 ## 0.13.0 (November 30, 2018)
   - Clean up makefile
   - Remove dead code
