@@ -1,20 +1,8 @@
 TOP_DIR=.
-README=$(TOP_DIR)/README.md
-BUILD_NAME=utility_belt
 VERSION=$(strip $(shell cat version))
-ELIXIR_VERSION=$(strip $(shell cat .elixir_version))
-OTP_VERSION=$(strip $(shell cat .otp_version))
-
-build:
-	@echo "Building the software..."
-	@mix compile
 
 init: install dep
 	@echo "Initializing the repo..."
-	@git submodule update --init --recursive
-
-travis-init: extract-deps
-	@echo "Initialize software required for travis (normally ubuntu software)"
 
 install:
 	@echo "Install software required for this repo..."
@@ -23,47 +11,33 @@ install:
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@mix deps.get
+	@cd src; mix deps.get
 
-pre-build: install dep
-	@echo "Running scripts before the build..."
-
-post-build:
-	@echo "Running scripts after the build is done..."
-
-all: pre-build build post-build
-
-test:
-	@echo "Running test suites..."
-	@mix test
-
-lint:
-	@echo "Linting the software..."
-
-doc:
-	@echo "Building the documenation..."
-
-precommit: dep build
-	@mix test_all
-
-travis: precommit
-
-travis-deploy:
-	@echo "Deploy the software by travis"
-	@make release
-
-clean:
-	@echo "Cleaning the build..."
-	@rm -rf _build
+build:
+	@echo "Building the software..."
+	@cd src; mix format; mix compile
 
 run:
 	@echo "Running the software..."
-	@iex -S mix
+	@cd src; iex -S mix
 
-rebuild-deps:
-	@rm -rf mix.lock;
-	@make dep
+test:
+	@echo "Running test suites..."
+	@cd src; mix test
+
+clean:
+	@echo "Cleaning the build..."
+	@cd src; rm -rf _build
+
+precommit: dep build
+	@cd src; mix test_all
+
+travis-init: extract-deps
+	@echo "Initialize software required for travis (normally ubuntu software)"
+
+travis: precommit
+
+travis-deploy: release
+	@echo "Deploy the software by travis"
 
 include .makefiles/*.mk
-
-.PHONY: build init travis-init install dep pre-build post-build all test doc precommit travis clean watch run bump-version create-pr
