@@ -23,4 +23,3 @@ deploy:
     on:
       repo: ArcBlock/utility_belt
       branch: master
-      tags: true

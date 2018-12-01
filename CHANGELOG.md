@@ -1,3 +1,6 @@
+## 0.13.2 (November 30, 2018)
+  - Remove deploy.on.tags for .travis.yml; tweak makefile
+
 ## 0.13.1 (November 30, 2018)
   - Travis use on.tags=true to prevent the unnecessary untagged releases
   - Add doctest for DynamicModule
