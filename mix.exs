@@ -52,7 +52,7 @@ defmodule UtilityBelt.MixProject do
       {:recase, "~> 0.3.0", optional: true},
 
       # joken related
-      {:joken, "~> 1.5"},
+      {:joken, "~> 1.5", optional: true},
 
       # comeonin related
       {:comeonin, "~> 4.1", optional: true},

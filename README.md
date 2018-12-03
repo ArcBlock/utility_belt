@@ -20,4 +20,3 @@ There are few exceptions dependencies cannot set `optional: true`
 - `ecto`: `import Ecto.Query` is used in `UtilityBelt.Ecto.QueryBuilder`
 - `joken`: `import Joken` is used in `UtilityBelt.Jwt`
 - `faker`: it's application needs to be started at runtime
-
