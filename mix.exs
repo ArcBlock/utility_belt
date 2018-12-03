@@ -33,7 +33,7 @@ defmodule UtilityBelt.MixProject do
 
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :faker],
       mod: {UtilityBelt.Application, []}
     ]
   end
@@ -44,37 +44,37 @@ defmodule UtilityBelt.MixProject do
 
   defp deps do
     [
-      {:cipher, "~> 1.4"},
-      {:ecto, "~> 3.0"},
-      {:ecto_sql, "~> 3.0"},
-      {:postgrex, "~> 0.14"},
-      {:not_qwerty123, "~> 2.3"},
-      {:recase, "~> 0.3.0"},
+      {:cipher, "~> 1.4", optional: true},
+      {:ecto, "~> 3.0", optional: true},
+      {:ecto_sql, "~> 3.0", optional: true},
+      {:postgrex, "~> 0.14", optional: true},
+      {:not_qwerty123, "~> 2.3", optional: true},
+      {:recase, "~> 0.3.0", optional: true},
 
       # joken related
-      {:joken, "~> 1.5"},
+      {:joken, "~> 1.5", optional: true},
 
       # comeonin related
-      {:comeonin, "~> 4.1"},
+      {:comeonin, "~> 4.1", optional: true},
       {:argon2_elixir, "~> 1.3", optional: true},
       {:bcrypt_elixir, "~> 1.1", optional: true},
 
       # Normal
       {:con_cache, "~> 0.13.0"},
-      {:ex_datadog_plug, "~> 0.5.0"},
-      {:plug, "~> 1.7", optional: true},
+      {:ex_datadog_plug, "~> 0.5.0", optional: true},
+      {:plug, "~> 1.7", optional: true, optional: true},
 
       # dev & test
-      {:credo, "~> 1.0", only: [:dev, :test]},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.19", only: [:dev, :test]},
-      {:pre_commit_hook, "~> 1.2", only: [:dev, :test]},
+      {:credo, "~> 1.0", only: [:dev, :test], optional: true},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false, optional: true},
+      {:ex_doc, "~> 0.19", only: [:dev, :test], optional: true},
+      {:pre_commit_hook, "~> 1.2", only: [:dev, :test], optional: true},
 
       # test only
-      {:faker, "~> 0.11", only: [:dev, :test]},
-      {:ex_machina, "~> 2.2.2", only: [:dev, :test]},
-      {:mock, "~> 0.3", only: [:dev, :test]},
-      {:coveralls, "~> 1.5", only: [:test]}
+      {:faker, "~> 0.11", only: [:dev, :test], optional: true},
+      {:ex_machina, "~> 2.2.2", only: [:dev, :test], optional: true},
+      {:mock, "~> 0.3", only: [:dev, :test], optional: true},
+      {:coveralls, "~> 1.5", only: [:test], optional: true}
     ]
   end
 
