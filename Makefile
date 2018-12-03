@@ -11,26 +11,26 @@ install:
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@cd src; mix deps.get
+	@mix deps.get
 
 build:
 	@echo "Building the software..."
-	@cd src; mix format; mix compile
+	@mix format; mix compile
 
 run:
 	@echo "Running the software..."
-	@cd src; iex -S mix
+	@iex -S mix
 
 test:
 	@echo "Running test suites..."
-	@cd src; mix test
+	@mix test
 
 clean:
 	@echo "Cleaning the build..."
-	@cd src; rm -rf _build
+	@rm -rf _build
 
 precommit: dep build
-	@cd src; mix test_all
+	@mix test_all
 
 travis-init: extract-deps
 	@echo "Initialize software required for travis (normally ubuntu software)"
@@ -41,3 +41,5 @@ travis-deploy: release
 	@echo "Deploy the software by travis"
 
 include .makefiles/*.mk
+
+.PHONY: test

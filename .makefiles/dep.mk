@@ -1,4 +1,4 @@
-SRC=src
+SRC=.
 DEPS_VER=v0.8.0
 DEPS_PREFIX=https://github.com/ArcBlock/mix-deps/releases/download
 BUILDS_FILE=builds.tgz
