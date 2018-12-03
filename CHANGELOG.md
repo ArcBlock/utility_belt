@@ -1,3 +1,6 @@
+## 0.14.2 (December 02, 2018)
+  - Fix few deps optional issue
+
 ## 0.14.1 (December 02, 2018)
   - Update all deps to be optional
 

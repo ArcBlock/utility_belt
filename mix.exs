@@ -33,7 +33,7 @@ defmodule UtilityBelt.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :faker],
+      extra_applications: [:logger],
       mod: {UtilityBelt.Application, []}
     ]
   end
@@ -45,14 +45,14 @@ defmodule UtilityBelt.MixProject do
   defp deps do
     [
       {:cipher, "~> 1.4", optional: true},
-      {:ecto, "~> 3.0", optional: true},
+      {:ecto, "~> 3.0"},
       {:ecto_sql, "~> 3.0", optional: true},
       {:postgrex, "~> 0.14", optional: true},
       {:not_qwerty123, "~> 2.3", optional: true},
       {:recase, "~> 0.3.0", optional: true},
 
       # joken related
-      {:joken, "~> 1.5", optional: true},
+      {:joken, "~> 1.5"},
 
       # comeonin related
       {:comeonin, "~> 4.1", optional: true},
@@ -71,7 +71,7 @@ defmodule UtilityBelt.MixProject do
       {:pre_commit_hook, "~> 1.2", only: [:dev, :test], optional: true},
 
       # test only
-      {:faker, "~> 0.11", only: [:dev, :test], optional: true},
+      {:faker, "~> 0.11", only: [:dev, :test]},
       {:ex_machina, "~> 2.2.2", only: [:dev, :test], optional: true},
       {:mock, "~> 0.3", only: [:dev, :test], optional: true},
       {:coveralls, "~> 1.5", only: [:test], optional: true}
