@@ -1,3 +1,6 @@
+## 0.14.1 (December 02, 2018)
+  - Update all deps to be optional
+
 ## 0.14.0 (December 02, 2018)
   - Fix folder structure
 
