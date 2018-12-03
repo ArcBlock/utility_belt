@@ -1,3 +1,6 @@
+## 0.14.0 (December 02, 2018)
+  - Fix folder structure
+
 ## 0.13.2 (November 30, 2018)
   - Remove deploy.on.tags for .travis.yml; tweak makefile
 
