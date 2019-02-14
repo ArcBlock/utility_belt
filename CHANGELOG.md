@@ -1,3 +1,6 @@
+## 0.15.0 (February 13, 2019)
+  - update version of recase
+
 ## 0.14.3 (December 03, 2018)
   - Tweak readme
   - Remove import Joken
