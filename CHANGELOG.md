@@ -1,3 +1,7 @@
+## 0.16.0 (August 19, 2019)
+  - fix publish issue
+  - bump deps
+
 ## 0.15.0 (February 13, 2019)
   - update version of recase
 

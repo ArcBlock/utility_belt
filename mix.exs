@@ -49,7 +49,7 @@ defmodule UtilityBelt.MixProject do
       {:ecto_sql, "~> 3.0", optional: true},
       {:postgrex, "~> 0.14", optional: true},
       {:not_qwerty123, "~> 2.3", optional: true},
-      {:recase, "~> 0.4.0", optional: true},
+      {:recase, "~> 0.6.0", optional: true},
 
       # joken related
       {:joken, "~> 1.5", optional: true},
